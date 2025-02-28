@@ -28,7 +28,6 @@ int main (){
             else if(arr[i] == arr[i+1]){
                 cout<<arr[i];
                 i = i+2;
-            
             }
 
         }
