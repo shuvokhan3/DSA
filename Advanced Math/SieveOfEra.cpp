@@ -1,37 +1,30 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-void SieveOfEratosthenes(int n)
+int countPrimes(int n)
 {
-    // Create a boolean array "prime[0..n]" and initialize
-    // all entries it as true. A value in prime[i] will
-    // finally be false if i is Not a prime, else true.
-   vector<bool> prime(n + 1, true);
+    if (n <= 2)
+        return 0;
 
-  for (int p = 2; p * p <= n; p++) {
+    vector<bool> isPrime(n, true);
+    isPrime[0] = isPrime[1] = false;
 
-
-        if (prime[p] == true) {
-            
-            // Update all multiples of p greater than or
-            // equal to the square of it numbers which are
-            // multiple of p and are less than p^2 are
-            // already been marked.
-            for (int i = p * p; i <= n; i += p)
-                prime[i] = false;
+    for (int i = 2; i * i < n; ++i)
+    {
+        if (isPrime[i])
+        {
+            for (int j = i * i; j < n; j += i)
+            {
+                isPrime[j] = false;
+            }
         }
     }
-    int cnt = 0;
 
-    //count the number of prime number
-    for (int p = 2; p <= n; p++){
-        if(prime[p]) cnt++;
-    }
-    cout<<cnt<<endl;
-
+    return count(isPrime.begin(), isPrime.end(), true);
 }
-int main (){
+int main()
+{
     int num;
-    cin>>num;
-    SieveOfEratosthenes(num);
+    cin >> num;
+    countPrimes(num);
     return 0;
 }
