@@ -1,3 +1,6 @@
+
+//https://codeforces.com/contest/2074/problem/C
+
 #include<bits/stdc++.h>
 using namespace std;
 int main (){
